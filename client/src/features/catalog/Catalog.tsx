@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Catalog() {
     const [products, setProducts] = useState<Product[]>([]);
- const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     // useEffect(() => {
     //   fetch('http://localhost:5000/api/products')
     //     .then(response => response.json())
@@ -15,12 +15,12 @@ export default function Catalog() {
 
     useEffect(() => {
         agent.Catalog.list()
-        .then(products => setProducts(products))
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false))
+            .then(products => setProducts(products))
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false))
     }, [])
 
-    if(loading) return <LoadingComponent message="Loading products....."/>
+    if (loading) return <LoadingComponent message="Loading products....." />
     return (
         <>
             <ProductList products={products}></ProductList>
