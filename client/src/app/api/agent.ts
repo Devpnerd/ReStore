@@ -1,8 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { error } from "console";
 import { toast } from "react-toastify";
 import { router } from "../router/Routes";
-import { Product } from "../models/product";
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
