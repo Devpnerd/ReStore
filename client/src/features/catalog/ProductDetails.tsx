@@ -2,16 +2,13 @@ import { LoadingButton } from "@mui/lab";
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import agent from "../../app/api/agent";
 import NotFound from "../../app/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponent";
-import { Product } from "../../app/models/product";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { addBasketItemAsync, removeBasketItemAsync, setBasket } from "../basket/basketSlice";
+import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
 import { fetchProductAsync, productSelectors } from "./catalogSlice";
 
 export default function ProductDetails() {
-    //debugger;
     const { basket, status} = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
@@ -94,7 +91,7 @@ export default function ProductDetails() {
 
                     <Grid item xs={6}>
                         <LoadingButton
-                        disabled={item?.quantity === quantity || !item && quantity === 0}
+                        disabled={(item?.quantity === quantity )|| (!item && quantity === 0)}
                             loading={status === 'pending'}
                             onClick={handleUpdateCart}
                             sx={{ height: '55px' }}
